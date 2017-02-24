@@ -1,0 +1,23 @@
+vector = Prim(sil://core.vector/2017-02-24T04:37:58Z)
+
+v1 = vector.fromList([1.0, 3.2, -1.1, 2.11])
+v2 = vector.range(1, 5)
+v3 = vector.zeros(4)
+
+sum  = vector.add(v1, v2)
+diff = vector.sub(v1, v2)
+prod = vector.mul(v1, v2)
+quo  = vector.divide(v1, v2)
+
+prod2 = vector.toList(prod)
+
+three = vector.getElem(v1, 0) + vector.getElem(v2, 1)
+
+setem = do
+  vector.setElem(0, -1.0)
+  vector.setElem(1, -2.0)
+  vector.setElem(3, -4.0)
+  unitIO(true)
+
+out = runST(v2, setem) -- ([-1.0, -2.0, 3.0, -4.0], true)
+
